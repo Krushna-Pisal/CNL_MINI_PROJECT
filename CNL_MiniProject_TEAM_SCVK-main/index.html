@@ -138,40 +138,53 @@
   .log-panel .flowline{color:var(--text);}
 
   /* ---------- packet flow lab ---------- */
-  .packet-lab{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px;}
-  .packet-controls{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:12px;align-items:end;}
-  .packet-controls label{display:block;font:11px var(--font-mono);text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-  .packet-controls select,.packet-controls button,.packet-controls input{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;color:var(--text);padding:9px;font:12px var(--font-mono);}
+  .packet-lab{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:20px;}
+  .packet-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end;}
+  .packet-controls>div{min-width:0;}
+  .packet-controls label{display:flex;align-items:flex-end;min-height:2.7em;font:11px/1.35 var(--font-mono);text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .packet-controls select,.packet-controls button,.packet-controls input{width:100%;min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;color:var(--text);padding:9px;font:12px var(--font-mono);}
+  .packet-controls input[type=range]{padding:8px 0;border:0;background:transparent;accent-color:var(--teal);}
+  .packet-controls select[multiple]{height:92px;padding:5px 8px;line-height:1.5;}
   .packet-controls button{cursor:pointer;background:#123a34;color:var(--teal);font-weight:700;}
-  .packet-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
-  .packet-actions button{width:auto;min-width:90px;}
+  .packet-actions{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:2px;}
+  .packet-actions button{min-height:38px;white-space:normal;}
+  .packet-control-note{grid-column:1/-1;padding:8px 10px;border-left:2px solid var(--amber);background:rgba(245,165,36,.05);color:#c4b28e;font:11px/1.45 var(--font-mono);}
   .packet-canvas-wrap{margin-top:16px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0b1424;}
-  #packetCanvas{display:block;width:100%;height:auto;min-height:390px;touch-action:none;cursor:grab;}
+  #packetCanvas{display:block;width:100%;height:auto;min-height:0;touch-action:none;cursor:grab;}
   #packetCanvas:active{cursor:grabbing;}
   .packet-link{stroke:#536783;stroke-width:3;cursor:pointer;}
   .packet-link.congested{stroke:var(--amber);stroke-dasharray:7 5;}
   .packet-link.failed{stroke:var(--red);stroke-dasharray:5 6;stroke-width:4;}
   .packet-link.route-static{stroke:var(--amber);stroke-width:5;}
   .packet-link.route-adaptive{stroke:var(--teal);stroke-width:5;}
+  .packet-load-label{fill:#c7d5e8;font:10px var(--font-mono);text-anchor:middle;paint-order:stroke;stroke:#0b1424;stroke-width:3px;stroke-linejoin:round;pointer-events:none;}
   .packet-node{cursor:pointer;}
   .packet-node rect,.packet-node circle{stroke:#8ca0bc;stroke-width:2;fill:#173157;}
   .packet-node.host circle{fill:#135442;}
   .packet-node text{fill:var(--text);font:12px var(--font-mono);text-anchor:middle;pointer-events:none;}
   .packet-site{fill:rgba(16,26,46,.62);stroke:#263b5c;stroke-width:1.5;}
   .packet-site-label{fill:#8ca0bc;font:13px var(--font-mono);}
-  .packet-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
-  .packet-info,.packet-events{background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:13px;min-height:125px;}
+  .packet-bottom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px;align-items:stretch;}
+  .packet-info,.packet-events{min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:15px;min-height:125px;}
+  #packetQueueList{padding-left:18px;margin-top:8px;}
+  #packetQueueList button{margin-left:8px;width:auto;padding:3px 7px;}
   .packet-info h4,.packet-events h4{font:13px var(--font-mono);color:var(--teal);margin-bottom:8px;}
   .packet-info p,.packet-events li{font:12px var(--font-mono);color:var(--muted);line-height:1.7;}
+  #packetSteps ol{padding-left:20px;display:grid;gap:7px;margin-top:5px;}
+  #packetSteps li{padding-left:3px;font:12px/1.55 var(--font-mono);color:var(--muted);}
+  .packet-target-field{grid-column:span 2;}
+  .packet-target-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 10px;max-height:112px;overflow:auto;padding:8px;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;}
+  .packet-target-links label{display:flex;align-items:center;gap:7px;min-height:0;margin:0;font:11px var(--font-mono);text-transform:none;cursor:pointer;}
+  .packet-target-links input{width:auto;accent-color:var(--teal);}
   .packet-events ol{padding-left:20px;max-height:160px;overflow:auto;}
   .packet-status{color:var(--green)!important;font-weight:700;}
   .packet-stopped{color:var(--amber)!important;}
 
   /* ---------- charts ---------- */
-  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px;}
+  .chart-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; min-width:0; overflow:hidden;}
   .chart-card h3{font-size:15px; margin-bottom:2px;}
   .chart-card .sub{color:var(--muted); font-size:12.5px; margin-bottom:16px;}
-  canvas{max-width:100%;}
+  canvas{display:block;width:100%;max-width:100%;height:220px;}
 
   /* ---------- table ---------- */
   table{width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:13px;}
@@ -190,7 +203,15 @@
     .arch{grid-template-columns:1fr; }
     .arrow{transform:rotate(90deg); padding:4px 0;}
     .packet-controls{grid-template-columns:repeat(2,minmax(120px,1fr));}
+    .packet-target-field{grid-column:1/-1;}
+    .packet-actions{grid-template-columns:repeat(3,minmax(0,1fr));}
     .packet-bottom{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .packet-lab{padding:14px;}
+    .packet-controls{grid-template-columns:minmax(0,1fr);}
+    .packet-actions{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .packet-actions button{min-width:0;font-size:11px;}
   }
   @media (prefers-reduced-motion: reduce){
     .flow-dot{animation:none !important;}
@@ -467,21 +488,28 @@
       <div class="card" style="margin-top:20px;"><h3>Network health and recent events</h3><p id="enterprise-health-summary" class="sub"></p><div id="enterprise-health"></div><div id="enterprise-events"></div></div>
       <div class="card" style="margin-top:20px;"><h3>Failover scenario</h3><p id="enterprise-failover"></p><p id="enterprise-live-failover" class="sub"></p><p class="sub">Graph simulation output is kept separate from live Mininet measurements.</p></div>
       <div class="packet-lab" id="packet-lab">
-        <div class="eyebrow">Interactive lab · Python graph simulation</div>
+        <div class="eyebrow">Interactive graph simulation</div>
         <h3 style="font-size:20px;margin-bottom:5px;">Packet flow visualization</h3>
-        <p class="sub">Animated markers represent simulated flows. Route choices are precomputed by the Python graph router; this is not live packet capture or Mininet telemetry. Drag to pan, use the wheel to zoom, and click a node or link to inspect it.</p>
+        <p class="sub">Run one flow or queue several endpoint pairs to watch traffic compete for links. Routes are recomputed in the browser from the selected graph. Colored dots are simulated packets; link labels show current modeled utilization. This is a graph simulation, not live packet capture or Mininet telemetry.</p>
         <div class="packet-controls">
-          <div><label for="packetSource">Source</label><select id="packetSource"></select></div>
-          <div><label for="packetDestination">Destination</label><select id="packetDestination"></select></div>
+          <div><label for="packetTopology">Topology</label><select id="packetTopology"><option value="enterprise">Enterprise branches (8 switches)</option><option value="mesh">8-switch redundant core</option><option value="ring">6-switch ring</option><option value="star">6-switch star</option><option value="tree">7-switch tree</option></select></div>
+          <div><label>Source node(s)</label><div id="packetSourceChoices" class="packet-target-links" aria-label="Select source nodes"></div></div>
+          <div><label>Destination node(s)</label><div id="packetDestinationChoices" class="packet-target-links" aria-label="Select destination nodes"></div></div>
           <div><label for="packetClass">Traffic class</label><select id="packetClass"><option>voice</option><option>video</option><option selected>web</option><option>bulk</option></select></div>
-          <div><label for="packetMode">Routing strategy</label><select id="packetMode"><option value="static">Static</option><option value="adaptive" selected>Adaptive</option></select></div>
-          <div><label for="packetScenario">Link scenario</label><select id="packetScenario"><option value="normal">Normal graph</option><option value="congested">Inject 100% load on s5–s7</option><option value="failed">Simulate failure of s5–s7</option></select></div>
+          <div><label for="packetMode">Routing strategy</label><select id="packetMode"><option value="static">Static baseline · ignores load</option><option value="adaptive" selected>AI adaptive · avoids congestion</option></select></div>
+          <div><label for="packetScenario">Scenario action</label><select id="packetScenario"><option value="normal">Normal operation / clear changes</option><option value="congested">Add congestion to selected link(s)</option><option value="failed">Fail selected link(s)</option></select></div>
+          <div class="packet-target-field"><label>Target link(s) · check one or more, or click links in the graph</label><div id="packetScenarioLinks" class="packet-target-links" aria-label="Select target links"></div></div>
+          <div><label for="packetLoad">Injected load <span id="packetLoadValue">80 Mbps</span></label><input id="packetLoad" type="range" min="1" max="1000" step="1" value="80"></div>
           <div><label for="packetProtocol">Protocol for ACL check</label><select id="packetProtocol"><option value="tcp" selected>TCP</option><option value="udp">UDP</option><option value="icmp">ICMP</option></select></div>
           <div><label for="packetPort">Destination port</label><select id="packetPort"><option>80</option><option>443</option><option>53</option><option>21</option><option>22</option><option>8443</option><option>5060</option><option>0</option></select></div>
           <div><label for="packetSpeed">Animation speed</label><input id="packetSpeed" type="range" min="250" max="1600" step="50" value="650"></div>
-          <div class="packet-actions"><button id="packetStart">Start / add flow</button><button id="packetPause">Pause all</button><button id="packetResume">Resume all</button><button id="packetStop">Stop all</button><button id="packetReset">Reset</button></div>
+          <div class="packet-control-note" id="packetMultiHint">Check one or more source and destination nodes. Each valid source × destination pair becomes a flow.</div>
+          <div class="packet-control-note">For rerouting, select target links, choose congestion or failure, then apply. AI adaptive responds to congestion; Static keeps its delay-only path.</div>
+          <div class="packet-actions"><button id="packetQueueAdd">Queue pairs</button><button id="packetQueueRun">Run queue</button><button id="packetStart">Run selected</button><button id="packetScenarioApply">Apply changes</button><button id="packetPause">Pause</button><button id="packetResume">Resume</button><button id="packetStop">Stop</button><button id="packetReset">Reset</button><button id="packetLock" aria-pressed="false">Lock view</button></div>
         </div>
+        <div class="packet-bottom"><div class="packet-info" id="packetQueue"><h4>Traffic queue</h4><p>Add multiple source, destination, and class combinations, then run them together to see shared-link load build up.</p><ol id="packetQueueList"></ol></div><div class="packet-info" id="packetSteps"><h4>Simulation steps</h4><ol><li>Generate traffic from the selected endpoints and class.</li><li>Classifier assigns a class and priority.</li><li>Controller scores paths using delay; adaptive mode also uses live and predicted link load.</li><li>Packets move hop by hop; congestion and failures affect available paths.</li></ol></div></div>
         <div class="packet-canvas-wrap"><svg id="packetCanvas" viewBox="0 0 1000 650" role="img" aria-label="Interactive enterprise network topology and simulated packet animation"></svg></div>
+        <div class="sub" style="margin-top:9px;">Moving dots = traffic flows · link labels = modeled utilization · amber dashed = congested · red dashed = failed · teal/amber links = adaptive/static chosen path. Active flows: <b id="packetActiveCount">0</b> · Scenario: <b id="packetScenarioStatus">Normal operation</b></div>
         <div class="packet-bottom"><div class="packet-info" id="packetInspector"><h4>Inspector</h4><p>Select a device or link to inspect its configured attributes.</p></div><div class="packet-events"><h4>Flow events</h4><ol id="packetEventList" aria-live="polite"></ol></div></div>
       </div>
     </div>
@@ -526,11 +554,14 @@ const ENTERPRISE_DATA = /*__ENTERPRISE_DATA_BEGIN__*/ {"summary":{"mode":"enterp
 function setupCanvas(canvas) {
   const parent = canvas.parentElement;
   const cssW = Math.max(200, parent.clientWidth);
-  const cssH = parseInt(canvas.getAttribute('height'), 10) || 220;
+  // canvas.height reflects the backing-store size after assignment. Keep the
+  // original CSS height separately so each redraw does not multiply it by DPR.
+  const cssH = Number(canvas.dataset.cssHeight) || parseInt(canvas.getAttribute('height'), 10) || 220;
+  canvas.dataset.cssHeight = cssH;
   const dpr = window.devicePixelRatio || 1;
   canvas.width = cssW * dpr;
   canvas.height = cssH * dpr;
-  canvas.style.width = cssW + 'px';
+  canvas.style.width = '100%';
   canvas.style.height = cssH + 'px';
   const ctx = canvas.getContext('2d');
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -972,87 +1003,59 @@ document.getElementById('enterprise-live-failover').textContent = MININET_FAILOV
   ? `Live Mininet failed ${MININET_FAILOVER_DATA.failed_link.join('–')}; path ${MININET_FAILOVER_DATA.controller_route_before_failure?.join(' → ') ?? 'n/a'} → ${MININET_FAILOVER_DATA.controller_route_after_failure?.join(' → ') ?? 'n/a'}; ping loss ${MININET_FAILOVER_DATA.ping_loss_pct ?? 'n/a'}%; detection ${MININET_FAILOVER_DATA.detection_time_ms ?? 'n/a'} ms; route recompute ${MININET_FAILOVER_DATA.route_recompute_time_ms ?? 'n/a'} ms; recovery after restore ${MININET_FAILOVER_DATA.recovery_after_restore_ms ?? 'n/a'} ms.`
   : 'Live Mininet failover measurements have not been recorded.';
 
-function initPacketLab() {
-  const data = ENTERPRISE_DATA.packet_simulation;
-  if (!data || !data.routes || !ENTERPRISE_DATA.topology.nodes) {
-    document.getElementById('packetInspector').innerHTML = '<h4>Visualization data unavailable</h4><p>Run the enterprise experiment again to export topology-backed route choices.</p>';
-    return;
+function initDynamicPacketLab() {
+  const svg=document.getElementById('packetCanvas'), NS='http://www.w3.org/2000/svg';
+  const $=id=>document.getElementById(id), make=(tag,attrs,parent=svg)=>{const e=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,v));parent.appendChild(e);return e;};
+  const source=$('packetSourceChoices'), dest=$('packetDestinationChoices'), log=$('packetEventList'), inspector=$('packetInspector');
+  let world=null, positions={}, edges=[], edgeEls={}, edgeLabels={}, nodes=[], flows=[], queue=[], launchTimers=[], frame=0, paused=false, pan={x:0,y:0,scale:1}, dragging=null, locked=false, serial=0, scenario={actions:[],link:null,load:80};
+  const key=(a,b)=>[a,b].sort().join('|'), ev=m=>{const li=document.createElement('li');li.textContent=`${new Date().toLocaleTimeString()} · ${m}`;log.prepend(li);};
+  function graph(kind){
+    if(kind==='enterprise') return {nodes:ENTERPRISE_DATA.topology.nodes.map(n=>({...n})),edges:ENTERPRISE_DATA.topology.links.map(l=>({...l}))};
+    const ring=[['s1','s2',100,2],['s2','s3',80,3],['s3','s4',100,2],['s4','s5',80,3],['s5','s6',100,2],['s6','s1',80,3],['s1','s4',60,5]];
+    const star=[['s1','s2',100,2],['s1','s3',100,2],['s1','s4',100,2],['s1','s5',100,2],['s1','s6',100,2]];
+    const tree=[['s1','s2',100,2],['s1','s3',100,2],['s2','s4',80,2],['s2','s5',80,2],['s3','s6',80,2],['s3','s7',80,2]];
+    const pairs=(kind==='ring'?ring:kind==='star'?star:kind==='tree'?tree:LINKS).map(x=>[...x]);
+    const switchIds=[...new Set(pairs.flatMap(x=>x.slice(0,2)).filter(id=>/^s\d+$/.test(id)))];
+    const ns=switchIds.map(id=>({id,kind:'switch',role:'OpenFlow switch'}));
+    const hostParents=kind==='mesh'?['s1','s2','s3','s6','s7','s8']:switchIds.slice(0,6);for(let i=0;i<hostParents.length;i++){const id=`h${i+1}`,sw=hostParents[i];ns.push({id,kind:'host',role:`Client ${i+1}`,switch:sw,ip:`10.0.0.${i+1}`});if(!pairs.some(p=>p[0]===id||p[1]===id))pairs.push([id,sw,1000,.5]);}
+    return {nodes:ns,edges:pairs.map(([a,b,capacity_mbps,delay_ms])=>({a,b,capacity_mbps,delay_ms,kind:a[0]==='h'||b[0]==='h'?'access':'core'}))};
   }
-  const svg = document.getElementById('packetCanvas'), NS = 'http://www.w3.org/2000/svg';
-  const nodes = ENTERPRISE_DATA.topology.nodes, links = ENTERPRISE_DATA.topology.links;
-  const byId = Object.fromEntries(nodes.map(n => [n.id, n])), positions = {}, hostCounters = {};
-  const swPos = {s1:[240,180],s2:[420,180],s3:[240,390],s4:[420,390],s5:[650,170],s7:[820,170],s6:[650,420],s8:[820,420]};
-  nodes.filter(n => n.kind === 'switch').forEach(n => positions[n.id] = swPos[n.id]);
-  nodes.filter(n => n.kind === 'host').forEach(n => {
-    const parent = n.switch, index = hostCounters[parent] || 0; hostCounters[parent] = index + 1;
-    const angle = (-0.9 + index * 1.35), radius = 80 + Math.floor(index / 3) * 20;
-    positions[n.id] = [swPos[parent][0] + Math.cos(angle) * radius, swPos[parent][1] + Math.sin(angle) * radius];
-  });
-  const make = (tag, attrs, parent=svg) => { const el = document.createElementNS(NS,tag); Object.entries(attrs||{}).forEach(([k,v])=>el.setAttribute(k,v)); parent.appendChild(el); return el; };
-  const layer = make('g',{id:'packetWorld'}), edgeEls = {};
-  const siteBounds = [
-    ['Headquarters',20,45,500,565],['Branch Office 1',545,45,430,260],['Branch Office 2',545,330,430,280]
-  ];
-  siteBounds.forEach(([name,x,y,w,h])=>{make('rect',{x,y,width:w,height:h,rx:16,class:'packet-site'},layer);const t=make('text',{x:x+16,y:y+24,class:'packet-site-label'},layer);t.textContent=name;});
-  links.forEach(link=>{
-    const key=[link.a,link.b].sort().join('|'), [x1,y1]=positions[link.a], [x2,y2]=positions[link.b];
-    const line=make('line',{x1,y1,x2,y2,class:'packet-link','data-key':key},layer); edgeEls[key]=line;
-    line.addEventListener('click',ev=>{ev.stopPropagation();inspectLink(link);});
-    const title=make('title',{},line); title.textContent=`${link.a}–${link.b}: ${link.capacity_mbps} Mbps, ${link.delay_ms} ms`;
-  });
-  nodes.forEach(node=>{
-    const [x,y]=positions[node.id], group=make('g',{class:`packet-node ${node.kind}`,'data-id':node.id},layer);
-    if(node.kind==='switch'){make('rect',{x:x-22,y:y-18,width:44,height:36,rx:6},group);}else{make('circle',{cx:x,cy:y,r:17},group);}
-    const label=make('text',{x,y:y+4},group);label.textContent=node.id;
-    group.addEventListener('click',ev=>{ev.stopPropagation();inspectNode(node);});
-    const title=make('title',{},group);title.textContent=`${node.id} · ${node.role||node.kind}${node.ip?' · '+node.ip:''}`;
-  });
-  const sourceSel=document.getElementById('packetSource'), destSel=document.getElementById('packetDestination');
-  const hostNodes=nodes.filter(n=>n.kind==='host').sort((a,b)=>a.id.localeCompare(b.id,undefined,{numeric:true}));
-  hostNodes.forEach(n=>{[sourceSel,destSel].forEach(sel=>{const o=document.createElement('option');o.value=n.id;o.textContent=`${n.id} · ${n.role} · ${n.ip} · VLAN ${n.vlan}`;sel.appendChild(o);});});
-  sourceSel.value='h4';destSel.value='h9';
-  const protocolSel=document.getElementById('packetProtocol'),portSel=document.getElementById('packetPort');
-  protocolSel.addEventListener('change',()=>{const valid=protocolSel.value==='tcp'?['0','21','22','53','80','443','8443']:protocolSel.value==='udp'?['0','53','5060']:['0'];const old=portSel.value;portSel.replaceChildren(...valid.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;return o;}));if(valid.includes(old))portSel.value=old;});
-  const log=document.getElementById('packetEventList'), inspector=document.getElementById('packetInspector');
-  let flowCounter=0, animations=[], frameId=0, paused=false, pan={x:0,y:0,scale:1}, dragging=null;
-  function event(message){const li=document.createElement('li');li.textContent=`${new Date().toLocaleTimeString()} · ${message}`;log.prepend(li);}
-  function inspectNode(n){const con=links.filter(l=>l.a===n.id||l.b===n.id).map(l=>`${l.a}–${l.b}`).join(', ')||'none';inspector.innerHTML='';const h=document.createElement('h4');h.textContent=`${n.id} · ${n.kind}`;inspector.append(h);const p=document.createElement('p');p.textContent=`Site: ${n.site||'—'} · Role: ${n.role||n.kind} · IP: ${n.ip||'—'} · VLAN: ${n.vlan||'—'} · Connected links: ${con}`;inspector.append(p);}
-  function inspectLink(l){inspector.innerHTML='';const h=document.createElement('h4');h.textContent=`Link ${l.a}–${l.b}`;inspector.append(h);const p=document.createElement('p');p.textContent=`Kind: ${l.kind} · Capacity: ${l.capacity_mbps} Mbps · Delay: ${l.delay_ms} ms · State: ${document.getElementById('packetScenario').value==='failed'&&[l.a,l.b].sort().join('|')==='s5|s7'?'failed in selected simulation scenario':'up in graph simulation'} · Utilization: not measured for this flow.`;inspector.append(p);}
-  function clearAnimation(){if(frameId)cancelAnimationFrame(frameId);frameId=0;animations.forEach(a=>{a.marker.remove();a.label.remove();});animations=[];paused=false;}
-  function clearRoute(){Object.values(edgeEls).forEach(e=>e.classList.remove('route-static','route-adaptive','congested','failed'));}
-  function applyScenario(){clearRoute();const scenario=document.getElementById('packetScenario').value;const key='s5|s7';if(scenario==='failed')edgeEls[key]?.classList.add('failed');if(scenario==='congested')edgeEls[key]?.classList.add('congested');}
-  document.getElementById('packetScenario').addEventListener('change',()=>{clearAnimation();applyScenario();});applyScenario();
-  function start(){const src=sourceSel.value,dst=destSel.value,traffic=document.getElementById('packetClass').value,mode=document.getElementById('packetMode').value,scenario=document.getElementById('packetScenario').value;
-    if(src===dst){event('Choose different source and destination devices.');return;}
-    const pkey=`${src}|${dst}|${traffic}`, routeKey=scenario==='normal'?mode:scenario==='congested'?mode+'_congested':mode+'_failed',route=data.routes[pkey]?.[routeKey];
-    if(!route){event(`No saved route for ${src} to ${dst}; no path was animated.`);return;}
-    const proto=protocolSel.value,port=Number(portSel.value),allowed=data.policy_outcomes[`${src}|${dst}|${proto}|${port}`];
-    flowCounter++;const id=`F${String(flowCounter).padStart(3,'0')}`;event(`Flow ${id} created: ${src} → ${dst}, ${traffic}, ${mode}.`);event(`Python router selected: ${route.join(' → ')}.`);
-    if(!allowed){event(`Flow ${id} denied by enterprise policy (${proto}/${port}); no packet was forwarded.`);inspector.innerHTML=`<h4>${id} · Policy denied</h4><p>${src} → ${dst} · ${traffic} · ${proto}/${port}. Denial comes from the configured enterprise policy. No latency or packet loss is measured.</p>`;return;}
-    route.slice(0,-1).forEach((u,i)=>{const k=[u,route[i+1]].sort().join('|');if(edgeEls[k])edgeEls[k].classList.add(mode==='static'?'route-static':'route-adaptive');});
-    const colors=['#2dd4bf','#f5a524','#a78bfa','#f87171','#60a5fa'];const marker=make('circle',{r:9,fill:colors[(flowCounter-1)%colors.length],stroke:'#e7eef7','stroke-width':2},layer);const label=make('text',{fill:'#e7eef7','font-size':11,'font-family':'monospace'},layer);label.textContent=id;
-    const current={id,route,index:0,elapsed:0,last:performance.now(),marker,label};animations.push(current);const detail=document.createElement('p');detail.textContent=`${id}: ${src} (${byId[src].ip}) → ${dst} (${byId[dst].ip}) · ${traffic} · ${mode} · path ${route.join(' → ')} · Latency is not measured for this animated flow.`;if(!inspector.querySelector('h4')||!inspector.textContent.includes('Active simulated flow'))inspector.innerHTML='<h4>Active simulated flows</h4>';inspector.append(detail);event(`Flow ${id} entered route at ${src}.`);scheduleTick();
+  function render(){
+    flows.forEach(f=>{f.marker.remove();f.label.remove();});flows=[];queue=[];scenario.actions=[];$('packetScenario').value='normal';drawQueue();launchTimers.forEach(clearTimeout);launchTimers=[];if(frame)cancelAnimationFrame(frame);frame=0; svg.replaceChildren(); edgeEls={};edgeLabels={};positions={};
+    const g=graph($('packetTopology').value);nodes=g.nodes;edges=g.edges; const switches=nodes.filter(n=>n.kind==='switch');
+    const type=$('packetTopology').value;
+    switches.forEach((n,i)=>{if(type==='enterprise'){const p={s1:[230,210],s2:[410,210],s3:[230,430],s4:[410,430],s5:[650,210],s7:[820,210],s6:[650,450],s8:[820,450]};positions[n.id]=p[n.id]||[100+i*100,320];}else if(type==='ring'){const a=-Math.PI/2+i*2*Math.PI/switches.length;positions[n.id]=[500+290*Math.cos(a),325+220*Math.sin(a)];}else if(type==='star'){positions[n.id]=i===0?[500,325]:[500+300*Math.cos((i-1)*2*Math.PI/(switches.length-1)),325+225*Math.sin((i-1)*2*Math.PI/(switches.length-1))];}else if(type==='tree'){positions[n.id]=[i===0?500:120+((i-1)%3)*380,100+(i===0?0:i<=2?180:390)];}else{positions[n.id]=[125+(i%4)*245,200+Math.floor(i/4)*310];}});
+    const counters={};nodes.filter(n=>n.kind==='host').forEach(n=>{const parent=n.switch||edges.find(e=>e.a===n.id||e.b===n.id)?.a;const sw=positions[parent]||[500,300],i=counters[parent]||0;counters[parent]=i+1;const angle=-1.2+i*1.15;positions[n.id]=[sw[0]+Math.cos(angle)*82,sw[1]+Math.sin(angle)*72];});
+    world=make('g',{id:'packetWorld'});
+    edges.forEach(l=>{const [x1,y1]=positions[l.a],[x2,y2]=positions[l.b],k=key(l.a,l.b),line=make('line',{x1,y1,x2,y2,class:'packet-link','data-key':k},world);edgeEls[k]=line;line.addEventListener('click',()=>{const box=[...$('packetScenarioLinks').querySelectorAll('input')].find(input=>input.value===k);if(box)box.checked=true;inspector.innerHTML=`<h4>Link ${l.a}–${l.b}</h4><p>Capacity ${l.capacity_mbps} Mbps · delay ${l.delay_ms} ms. Selected for a custom scenario. Apply it to inject load or fail this link.</p>`;});const label=make('text',{x:(x1+x2)/2,y:(y1+y2)/2-7,class:'packet-load-label'},world);label.textContent='0%';edgeLabels[k]=label;});
+    nodes.forEach(n=>{const [x,y]=positions[n.id],el=make('g',{class:`packet-node ${n.kind}`,'data-id':n.id},world);n.kind==='switch'?make('rect',{x:x-23,y:y-18,width:46,height:36,rx:6},el):make('circle',{cx:x,cy:y,r:17},el);const t=make('text',{x,y:y+4},el);t.textContent=n.id;el.addEventListener('click',()=>{inspector.innerHTML=`<h4>${n.id} · ${n.kind}</h4><p>${n.role||'Network endpoint'}${n.ip?' · '+n.ip:''}. Connected to ${edges.filter(e=>e.a===n.id||e.b===n.id).map(e=>e.a===n.id?e.b:e.a).join(', ')}.</p>`;});});
+    const hosts=nodes.filter(n=>n.kind==='host'),endpoints=[...hosts,...nodes.filter(n=>n.kind!=='host')],sourceDefault=hosts.some(n=>n.id==='h4')?'h4':hosts[0]?.id,destDefault=hosts.some(n=>n.id==='h9')?'h9':hosts.at(-1)?.id;[source,dest].forEach((box,index)=>box.replaceChildren(...endpoints.map(n=>{const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.value=n.id;input.checked=n.id===(index===0?sourceDefault:destDefault);label.append(input,document.createTextNode(`${n.id} · ${n.kind}`));return label;})));
+    const target=$('packetScenarioLinks');target.replaceChildren(...edges.map(l=>{const k=key(l.a,l.b),label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.value=k;input.checked=false;label.append(input,document.createTextNode(`${l.a}–${l.b} · ${l.capacity_mbps} Mbps`));return label;}));
+    pan={x:0,y:0,scale:1};transform();updateLoads();ev(`Loaded ${$('packetTopology').selectedOptions[0].text}: ${switches.length} switches, ${hosts.length} endpoints, ${edges.length} links.`);
   }
-  function finish(a,status,reason){a.marker.remove();a.label.remove();animations=animations.filter(flow=>flow!==a);event(`Flow ${a.id} ${status}${reason?': '+reason:''}`);const p=document.createElement('p');p.className='packet-status';p.textContent=`Flow ${a.id}: ${status}${reason?' · '+reason:''}`;inspector.append(p);}
-  function scheduleTick(){if(!frameId&&!paused&&animations.length)frameId=requestAnimationFrame(tick);}
-  function tick(now){frameId=0;if(paused)return;const stepMs=Number(document.getElementById('packetSpeed').value);for(const a of [...animations]){a.elapsed+=now-a.last;a.last=now;const ratio=Math.min(1,a.elapsed/stepMs);const [x1,y1]=positions[a.route[a.index]],[x2,y2]=positions[a.route[a.index+1]];a.marker.setAttribute('cx',x1+(x2-x1)*ratio);a.marker.setAttribute('cy',y1+(y2-y1)*ratio);a.label.setAttribute('x',x1+(x2-x1)*ratio+12);a.label.setAttribute('y',y1+(y2-y1)*ratio-10);
-      if(ratio>=1){event(`Flow ${a.id} forwarded ${a.route[a.index]} → ${a.route[a.index+1]}.`);a.index++;a.elapsed=0;a.last=now;if(a.index>=a.route.length-1)finish(a,'delivered',`destination ${a.route.at(-1)}`);}}
-    scheduleTick();
-  }
-  document.getElementById('packetStart').addEventListener('click',()=>{try{start();}catch(err){console.error('Packet lab start failed:',err);event(`Unable to start flow: ${err.message}`);inspector.innerHTML=`<h4>Flow could not start</h4><p>${err.message}</p>`;}});
-  document.getElementById('packetPause').addEventListener('click',()=>{if(animations.length&&!paused){paused=true;if(frameId)cancelAnimationFrame(frameId);frameId=0;animations.forEach(a=>event(`Flow ${a.id} paused at hop ${a.index+1}/${a.route.length-1}.`));}});
-  document.getElementById('packetResume').addEventListener('click',()=>{if(animations.length&&paused){paused=false;const now=performance.now();animations.forEach(a=>{a.last=now;event(`Flow ${a.id} resumed.`);});scheduleTick();}});
-  document.getElementById('packetStop').addEventListener('click',()=>{paused=false;[...animations].forEach(a=>finish(a,'stopped by user','animation stopped'));});
-  document.getElementById('packetReset').addEventListener('click',()=>{clearAnimation();log.replaceChildren();clearRoute();applyScenario();inspector.innerHTML='<h4>Inspector</h4><p>Animation reset. Select a device or link to inspect it.</p>';});
-  // SVG viewport: wheel zoom and background drag pan. Device/link clicks remain inspectable.
-  function transform(){layer.setAttribute('transform',`translate(${pan.x} ${pan.y}) scale(${pan.scale})`);}
-  svg.addEventListener('wheel',e=>{e.preventDefault();pan.scale=Math.max(.65,Math.min(2.2,pan.scale*(e.deltaY<0?1.1:.9)));transform();},{passive:false});
-  svg.addEventListener('pointerdown',e=>{if(e.target.closest('.packet-node')||e.target.classList.contains('packet-link'))return;dragging={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};svg.setPointerCapture(e.pointerId);});
-  svg.addEventListener('pointermove',e=>{if(dragging){const rect=svg.getBoundingClientRect();pan.x=dragging.px+(e.clientX-dragging.x)*1000/rect.width;pan.y=dragging.py+(e.clientY-dragging.y)*650/rect.height;transform();}});svg.addEventListener('pointerup',()=>dragging=null);
-  svg.addEventListener('dblclick',()=>{pan={x:0,y:0,scale:1};transform();});
+  function transform(){if(world)world.setAttribute('transform',`translate(${pan.x} ${pan.y}) scale(${pan.scale})`);}
+  function route(src,dst,mode,traffic){const dist={},prev={},seen=new Set();nodes.forEach(n=>dist[n.id]=Infinity);dist[src]=0;const priority={voice:1,video:2,web:3,bulk:4}[traffic]||3;while(true){let u=null,best=Infinity;Object.keys(dist).forEach(n=>{if(!seen.has(n)&&dist[n]<best){best=dist[n];u=n;}});if(u===null||u===dst)break;seen.add(u);edges.forEach(l=>{const v=l.a===u?l.b:l.b===u?l.a:null;if(!v||seen.has(v))return;const k=key(u,v);if(scenario.actions.some(a=>a.type==='failed'&&a.link===k))return;const injected=scenario.actions.filter(a=>a.type==='congested'&&a.link===k).reduce((s,a)=>s+a.load,0);const live=flows.filter(f=>f.path.some((n,i)=>i<f.path.length-1&&key(n,f.path[i+1])===k)).reduce((sum,f)=>sum+f.demand,0);const capacity=Math.max(1,Number(l.capacity_mbps||100)),current=Math.min(1.5,(injected+live)/capacity),forecast=Math.min(1.5,current*1.12);const cost=Number(l.delay_ms||2)+(mode==='adaptive'?(35*Math.pow(current,3)+12*Math.pow(forecast,3))*({1:1.6,2:1.3,3:1,4:.7}[priority]):0);if(best+cost<dist[v]){dist[v]=best+cost;prev[v]=u;}});}if(!isFinite(dist[dst]))return null;const p=[dst];while(p[0]!==src){if(!prev[p[0]])return null;p.unshift(prev[p[0]]);}return p;}
+  function updateLoads(){edges.forEach(l=>{const k=key(l.a,l.b),active=flows.filter(f=>f.path.some((n,i)=>i<f.path.length-1&&key(n,f.path[i+1])===k)).reduce((s,f)=>s+f.demand,0),injected=scenario.actions.filter(a=>a.type==='congested'&&a.link===k).reduce((s,a)=>s+a.load,0),util=100*(active+injected)/Math.max(1,Number(l.capacity_mbps||100)),label=edgeLabels[k],line=edgeEls[k],failed=scenario.actions.some(a=>a.type==='failed'&&a.link===k);if(label)label.textContent=`${Math.round(util)}%`;if(line){line.classList.toggle('congested',util>=80);line.classList.toggle('failed',failed);}});const count=$('packetActiveCount'),status=$('packetScenarioStatus');if(count)count.textContent=String(flows.length);if(status)status.textContent=scenario.actions.length?`${scenario.actions.length} custom link change(s)`: 'Normal operation';}
+  function selectedTargetLinks(){return [...$('packetScenarioLinks').querySelectorAll('input:checked')].map(input=>input.value);}
+  function applyScenario(){const type=$('packetScenario').value,links=selectedTargetLinks(),load=Number($('packetLoad').value);scenario.load=load;if(type==='normal')scenario.actions=[];else if(!links.length){ev('Select at least one target link, or click a link in the graph, then apply the scenario.');return;}else links.forEach(link=>{scenario.actions=scenario.actions.filter(a=>!(a.type===type&&a.link===link));scenario.actions.push({type,link,load});});let changed=0;if(type==='failed'){flows.forEach(f=>{const failedLink=f.path.slice(f.index).map((n,i,a)=>i<a.length-1?key(n,a[i+1]):null).find(k=>scenario.actions.some(a=>a.type==='failed'&&a.link===k));if(failedLink){const here=f.path[f.index],next=route(here,f.path.at(-1),f.mode,f.traffic);if(next){f.path=f.path.slice(0,f.index).concat(next);ev(`${f.id} rerouted around failed link ${failedLink}: ${f.path.join(' → ')}.`);changed++;}else{f.marker.remove();f.label.remove();flows=flows.filter(x=>x!==f);ev(`${f.id} dropped: no alternate route after ${failedLink} failed.`);}}});}updateLoads();ev(type==='normal'?'All custom scenarios cleared; links restored.':type==='failed'?`Failure applied to ${links.length} link(s); ${changed} active flow(s) rerouted.`:`Injected ${load} Mbps on ${links.length} link(s). AI adaptive routing factors all selected congestion into its path cost.`);}
+  function start(config={}){const src=config.src||source.querySelector('input:checked')?.value,dst=config.dst||dest.querySelector('input:checked')?.value,mode=config.mode||$('packetMode').value,traffic=config.traffic||$('packetClass').value;if(!src||!dst||src===dst){ev('Select different source and destination nodes.');return;}const path=route(src,dst,mode,traffic);serial++;const id=`F${String(serial).padStart(3,'0')}`;if(!path){ev(`${id}: no route is available under the selected failure scenario.`);return;}const proto=$('packetProtocol').value,port=Number($('packetPort').value),policyKey=`${src}|${dst}|${proto}|${port}`,hostPair=nodes.find(n=>n.id===src)?.kind==='host'&&nodes.find(n=>n.id===dst)?.kind==='host',allowed=$('packetTopology').value!=='enterprise'||!hostPair||ENTERPRISE_DATA.packet_simulation.policy_outcomes[policyKey]!==false;
+    const palette=['#2dd4bf','#f5a524','#a78bfa','#f87171','#60a5fa'],marker=make('circle',{r:9,fill:palette[(serial-1)%5],stroke:'#e7eef7','stroke-width':2},world),label=make('text',{fill:'#e7eef7','font-size':11,'font-family':'monospace'},world);label.textContent=id;
+    if(!allowed){ev(`${id} blocked by enterprise ACL (${proto}/${port}); no packets forwarded.`);marker.remove();label.remove();inspector.innerHTML=`<h4>${id} · Policy denied</h4><p>${src} → ${dst} · ${proto}/${port} is denied by the selected enterprise policy.</p>`;return;}
+    path.slice(0,-1).forEach((u,i)=>edgeEls[key(u,path[i+1])]?.classList.add(mode==='adaptive'?'route-adaptive':'route-static'));
+    const cls=traffic==='voice'?'latency-sensitive':traffic==='bulk'?'high-volume':'standard',demand={voice:.1,video:4.5,web:1.2,bulk:20}[traffic],counterPath=mode==='adaptive'?route(src,dst,'static',traffic):route(src,dst,'adaptive',traffic),different=counterPath&&counterPath.join(' → ')!==path.join(' → '),comparison=different?(mode==='adaptive'?` Static baseline would use ${counterPath.join(' → ')}; AI adaptive avoids the loaded link.`:` AI adaptive would instead use ${counterPath.join(' → ')}.`):(mode==='static'&&scenario.actions.some(a=>a.type==='congested')?' Static ignores injected load; AI adaptive also evaluates it, but selects this same route under current conditions.':' Both strategies select the same path under this scenario.');ev(`${id}: classifier tags ${traffic} traffic (${cls}); ${mode} selects ${path.join(' → ')}.${comparison}`);inspector.innerHTML=`<h4>${id} · AI controller trace</h4><p>1. Generate ${traffic} profile traffic at ${demand} Mbps. 2. Classifier assigns class and priority. 3. ${mode==='adaptive'?'AI scores paths with delay, current utilization, and forecast utilization, weighted by class priority.':'Static baseline chooses the lowest-delay path and ignores load.'}${comparison} 4. Install path ${path.join(' → ')}. The moving marker shows packet forwarding hop by hop.</p>`;flows.push({id,path,demand,mode,traffic,index:0,elapsed:0,last:performance.now(),marker,label});updateLoads();tick(performance.now());}
+  function tick(now){frame=0;if(paused)return;const speed=Number($('packetSpeed').value);for(const f of [...flows]){if(f.index>=f.path.length-1)continue;f.elapsed+=now-f.last;f.last=now;const q=Math.min(1,f.elapsed/speed),a=positions[f.path[f.index]],b=positions[f.path[f.index+1]];f.marker.setAttribute('cx',a[0]+(b[0]-a[0])*q);f.marker.setAttribute('cy',a[1]+(b[1]-a[1])*q);f.label.setAttribute('x',a[0]+(b[0]-a[0])*q+12);f.label.setAttribute('y',a[1]+(b[1]-a[1])*q-10);if(q>=1){ev(`${f.id}: forwarded ${f.path[f.index]} → ${f.path[f.index+1]}.`);f.index++;f.elapsed=0;f.last=now;if(f.index>=f.path.length-1){ev(`${f.id} delivered to ${f.path.at(-1)}.`);f.marker.remove();f.label.remove();flows=flows.filter(x=>x!==f);}}}updateLoads();if(flows.length)frame=requestAnimationFrame(tick);}
+  function drawQueue(){const ul=$('packetQueueList');if(!ul)return;ul.replaceChildren();queue.forEach((q,i)=>{const li=document.createElement('li');li.textContent=`${q.src} → ${q.dst} · ${q.traffic} · ${q.mode} `;const b=document.createElement('button');b.textContent='remove';b.addEventListener('click',()=>{queue.splice(i,1);drawQueue();});li.appendChild(b);ul.appendChild(li);});if(!queue.length){const p=document.createElement('li');p.textContent='No queued flows yet.';ul.appendChild(p);}}
+  function selectedPairs(){const srcs=[...source.querySelectorAll('input:checked')].map(o=>o.value),dsts=[...dest.querySelectorAll('input:checked')].map(o=>o.value),pairs=[];srcs.forEach(src=>dsts.forEach(dst=>{if(src!==dst)pairs.push({src,dst,traffic:$('packetClass').value,mode:$('packetMode').value});}));return pairs;}
+  function enqueue(){const pairs=selectedPairs();if(!pairs.length){ev('Check at least one source and one different destination node.');return;}queue.push(...pairs);drawQueue();ev(`Queued ${pairs.length} flow pair(s) using ${$('packetClass').value} traffic. Add more selections or run the queue.`);}
+  function runSelected(){const batch=selectedPairs();if(!batch.length){ev('Select at least one source and one different destination node.');return;}ev(`Starting ${batch.length} selected flow(s).`);batch.forEach((q,i)=>{const timer=setTimeout(()=>{launchTimers=launchTimers.filter(t=>t!==timer);start(q);},i*180);launchTimers.push(timer);});}
+  $('packetTopology').addEventListener('change',render);$('packetScenarioApply').addEventListener('click',applyScenario);$('packetLoad').addEventListener('input',()=>{$('packetLoadValue').textContent=`${$('packetLoad').value} Mbps`;});$('packetQueueAdd').addEventListener('click',enqueue);$('packetQueueRun').addEventListener('click',()=>{const batch=queue.splice(0);drawQueue();if(!batch.length){ev('Queue is empty.');return;}ev(`Simulation started: ${batch.length} queued flow(s) released into the network.`);batch.forEach((q,i)=>{const timer=setTimeout(()=>{launchTimers=launchTimers.filter(t=>t!==timer);start(q);},i*180);launchTimers.push(timer);});});$('packetStart').addEventListener('click',runSelected);
+  $('packetPause').addEventListener('click',()=>{paused=true;if(frame)cancelAnimationFrame(frame);frame=0;ev('All animated flows paused.');});$('packetResume').addEventListener('click',()=>{if(paused){paused=false;flows.forEach(f=>f.last=performance.now());ev('Flows resumed.');tick(performance.now());}});
+  $('packetStop').addEventListener('click',()=>{launchTimers.forEach(clearTimeout);launchTimers=[];flows.forEach(f=>{f.marker.remove();f.label.remove();});flows=[];if(frame)cancelAnimationFrame(frame);frame=0;paused=false;updateLoads();ev('All flows stopped.');});$('packetReset').addEventListener('click',()=>{launchTimers.forEach(clearTimeout);launchTimers=[];flows.forEach(f=>{f.marker.remove();f.label.remove();});flows=[];queue=[];scenario.actions=[];$('packetScenario').value='normal';drawQueue();if(frame)cancelAnimationFrame(frame);frame=0;paused=false;serial=0;log.replaceChildren();Object.values(edgeEls).forEach(e=>e.classList.remove('route-static','route-adaptive'));updateLoads();inspector.innerHTML='<h4>Inspector</h4><p>Reset complete. Select endpoints and run a flow.</p>';});
+  $('packetLock').addEventListener('click',e=>{locked=!locked;e.currentTarget.textContent=locked?'Unlock position':'Lock position';e.currentTarget.setAttribute('aria-pressed',String(locked));svg.style.cursor=locked?'default':'grab';ev(locked?'Topology position locked; pan and zoom disabled.':'Topology position unlocked; drag and wheel to move/zoom.');});
+  svg.addEventListener('wheel',e=>{if(locked)return;e.preventDefault();pan.scale=Math.max(.65,Math.min(2.2,pan.scale*(e.deltaY<0?1.1:.9)));transform();},{passive:false});svg.addEventListener('pointerdown',e=>{if(locked||e.target.closest('.packet-node')||e.target.classList.contains('packet-link'))return;dragging={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y};svg.setPointerCapture(e.pointerId);});svg.addEventListener('pointermove',e=>{if(dragging&&!locked){const r=svg.getBoundingClientRect();pan.x=dragging.px+(e.clientX-dragging.x)*1000/r.width;pan.y=dragging.py+(e.clientY-dragging.y)*650/r.height;transform();}});svg.addEventListener('pointerup',()=>dragging=null);render();
 }
 if (ENTERPRISE_DATA) {
-  try { initPacketLab(); }
+  try { initDynamicPacketLab(); }
   catch (err) {
     console.error('Packet lab initialization failed:', err);
     const panel = document.getElementById('packetInspector');
