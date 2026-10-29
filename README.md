@@ -11,7 +11,7 @@ the same traffic.
 Open **`index.html`** in any browser — it's a self-contained dashboard (no
 server needed) that presents the whole project to your teacher: architecture,
 topology, ML model performance, and the static-vs-adaptive results, all
-generated from the actual simulation run in `src/`.
+generated from the actual simulation run in  `src/`.
 
 ---
 
